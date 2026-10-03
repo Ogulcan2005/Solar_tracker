@@ -1,0 +1,16 @@
+services:
+
+  solar_tracker:
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    container_name: solar_tracker
+
+    ports:
+      - "8081:80"
+
+    volumes:
+      - .:/var/www/html
+
+    restart: unless-stopped
