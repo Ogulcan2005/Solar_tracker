@@ -1,0 +1,144 @@
+<mxfile host="app.diagrams.net" agent="ChatGPT">
+  <diagram id="solar-tracker-flow" name="Solar Tracker Flowchart">
+    <mxGraphModel dx="1698" dy="990" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="1150" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" parent="1" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=24;fontStyle=1;fontColor=#00515A;" value="Flowchart – Werking Solar Tracker" vertex="1">
+          <mxGeometry height="40" width="600" x="250" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="start" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=light-dark(#FAD7AC,#069F27);strokeColor=#b46504;strokeWidth=3;fontStyle=1;fontSize=15;arcSize=50;spacing=8;" value="Start" vertex="1">
+          <mxGeometry height="42" width="190" x="455" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="open" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0B858B;strokeColor=#00515A;strokeWidth=1.5;fontColor=#FFFFFF;fontStyle=1;fontSize=14;arcSize=12;spacing=8;" value="Gebruiker opent de Solar Tracker" vertex="1">
+          <mxGeometry height="48" width="300" x="400" y="145" as="geometry" />
+        </mxCell>
+        <mxCell id="login" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#00515A;strokeColor=#00515A;fontColor=#FFFFFF;fontStyle=1;fontSize=14;arcSize=12;spacing=8;" value="Inlogpagina&lt;br/&gt;E-mailadres en wachtwoord invoeren" vertex="1">
+          <mxGeometry height="60" width="300" x="400" y="215" as="geometry" />
+        </mxCell>
+        <mxCell id="valid" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=#FFCC00;strokeColor=#00515A;strokeWidth=2;fontColor=#003D44;fontStyle=1;fontSize=13;spacing=6;" value="Inloggegevens&lt;br/&gt;geldig?" vertex="1">
+          <mxGeometry height="85" width="150" x="475" y="300" as="geometry" />
+        </mxCell>
+        <mxCell id="error" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FCE8E6;strokeColor=#C65353;strokeWidth=1.5;fontColor=#7F1D1D;fontStyle=1;fontSize=13;arcSize=12;spacing=8;" value="Foutmelding tonen&lt;br/&gt;en opnieuw proberen" vertex="1">
+          <mxGeometry height="58" width="220" x="120" y="315" as="geometry" />
+        </mxCell>
+        <mxCell id="checkdb" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0B858B;strokeColor=#00515A;strokeWidth=1.5;fontColor=#FFFFFF;fontStyle=1;fontSize=14;arcSize=12;spacing=8;" value="Inloggegevens controleren" vertex="1">
+          <mxGeometry height="48" width="300" x="400" y="415" as="geometry" />
+        </mxCell>
+        <mxCell id="userdb" parent="1" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#E7F2FF;strokeColor=#3976A8;strokeWidth=2;fontColor=#173B5B;fontStyle=1;fontSize=14;spacing=8;" value="Database&lt;br/&gt;gebruikersaccounts" vertex="1">
+          <mxGeometry height="60" width="210" x="760" y="410" as="geometry" />
+        </mxCell>
+        <mxCell id="success" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#00515A;strokeColor=#00515A;fontColor=#FFFFFF;fontStyle=1;fontSize=14;arcSize=12;spacing=8;" value="Login succesvol" vertex="1">
+          <mxGeometry height="44" width="250" x="425" y="485" as="geometry" />
+        </mxCell>
+        <mxCell id="dashboard" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0B858B;strokeColor=#00515A;strokeWidth=1.5;fontColor=#FFFFFF;fontStyle=1;fontSize=14;arcSize=12;spacing=8;" value="Dashboard openen" vertex="1">
+          <mxGeometry height="44" width="250" x="425" y="550" as="geometry" />
+        </mxCell>
+        <mxCell id="fetch" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#00515A;strokeColor=#00515A;fontColor=#FFFFFF;fontStyle=1;fontSize=14;arcSize=12;spacing=8;" value="Meetgegevens opvragen uit database" vertex="1">
+          <mxGeometry height="48" width="320" x="390" y="615" as="geometry" />
+        </mxCell>
+        <mxCell id="datadb" parent="1" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#E7F2FF;strokeColor=#3976A8;strokeWidth=2;fontColor=#173B5B;fontStyle=1;fontSize=14;spacing=8;" value="Database&lt;br/&gt;meetgegevens" vertex="1">
+          <mxGeometry height="60" width="210" x="760" y="608" as="geometry" />
+        </mxCell>
+        <mxCell id="process" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0B858B;strokeColor=#00515A;strokeWidth=1.5;fontColor=#FFFFFF;fontStyle=1;fontSize=14;arcSize=12;spacing=8;" value="Data verwerken en berekenen" vertex="1">
+          <mxGeometry height="46" width="270" x="415" y="680" as="geometry" />
+        </mxCell>
+        <mxCell id="kpi" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E5F6F3;strokeColor=#16857B;strokeWidth=2;fontColor=#00464E;fontStyle=1;fontSize=13;arcSize=12;spacing=8;" value="KPI-kaarten&lt;br/&gt;Opbrengst, vermogen,&lt;br/&gt;nettoresultaat" vertex="1">
+          <mxGeometry height="90" width="235" x="95" y="785" as="geometry" />
+        </mxCell>
+        <mxCell id="charts" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E5F6F3;strokeColor=#16857B;strokeWidth=2;fontColor=#00464E;fontStyle=1;fontSize=13;arcSize=12;spacing=8;" value="Grafieken&lt;br/&gt;Vermogen en energie per dag" vertex="1">
+          <mxGeometry height="90" width="235" x="382" y="785" as="geometry" />
+        </mxCell>
+        <mxCell id="history" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E5F6F3;strokeColor=#16857B;strokeWidth=2;fontColor=#00464E;fontStyle=1;fontSize=13;arcSize=12;spacing=8;" value="Historie&lt;br/&gt;Meetgegevens en status" vertex="1">
+          <mxGeometry height="90" width="235" x="670" y="785" as="geometry" />
+        </mxCell>
+        <mxCell id="display" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#00515A;strokeColor=#00515A;fontColor=#FFFFFF;fontStyle=1;fontSize=14;arcSize=12;spacing=8;" value="Dashboard toont actuele gegevens en visualisaties" vertex="1">
+          <mxGeometry height="55" width="300" x="350" y="920" as="geometry" />
+        </mxCell>
+        <mxCell id="end" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#00464E;strokeColor=#FFCC00;strokeWidth=3;fontColor=#FFFFFF;fontStyle=1;fontSize=15;arcSize=50;spacing=8;" value="Einde – gebruiker bekijkt de zonnepaneelprestaties" vertex="1">
+          <mxGeometry height="48" width="400" x="300" y="1000" as="geometry" />
+        </mxCell>
+        <mxCell id="note" parent="1" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=12;fontColor=#397080;" value="Inloggegevens en meetgegevens worden uit de database opgehaald." vertex="1">
+          <mxGeometry height="28" width="500" x="250" y="1070" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" edge="1" parent="1" source="start" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#00515A;strokeWidth=2;endArrow=block;endFill=1;fontColor=#00515A;fontStyle=1;" target="open" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" edge="1" parent="1" source="open" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#00515A;strokeWidth=2;endArrow=block;endFill=1;fontColor=#00515A;fontStyle=1;" target="login" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" edge="1" parent="1" source="login" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#00515A;strokeWidth=2;endArrow=block;endFill=1;fontColor=#00515A;fontStyle=1;" target="valid" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" edge="1" parent="1" source="valid" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#00515A;strokeWidth=2;endArrow=block;endFill=1;fontColor=#00515A;fontStyle=1;" target="checkdb" value="Ja">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" edge="1" parent="1" source="valid" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#C65353;strokeWidth=2;endArrow=block;endFill=1;fontColor=#C65353;fontStyle=1;" target="error" value="Nee">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e6" edge="1" parent="1" source="error" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#00515A;strokeWidth=2;endArrow=block;endFill=1;fontColor=#00515A;fontStyle=1;" target="login" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e7" edge="1" parent="1" source="checkdb" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#00515A;strokeWidth=2;endArrow=block;endFill=1;fontColor=#00515A;fontStyle=1;" target="success" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e8" edge="1" parent="1" source="success" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#00515A;strokeWidth=2;endArrow=block;endFill=1;fontColor=#00515A;fontStyle=1;" target="dashboard" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e9" edge="1" parent="1" source="dashboard" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#00515A;strokeWidth=2;endArrow=block;endFill=1;fontColor=#00515A;fontStyle=1;" target="fetch" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e10" edge="1" parent="1" source="fetch" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#00515A;strokeWidth=2;endArrow=block;endFill=1;fontColor=#00515A;fontStyle=1;" target="process" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e11" edge="1" parent="1" source="userdb" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#3976A8;strokeWidth=2;dashed=1;endArrow=block;endFill=1;" target="checkdb" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e12" edge="1" parent="1" source="fetch" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#3976A8;strokeWidth=2;dashed=1;endArrow=block;endFill=1;" target="datadb" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e13" edge="1" parent="1" source="process" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#00515A;strokeWidth=2;endArrow=block;endFill=1;" target="kpi" value="">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="550" y="755" />
+              <mxPoint x="212" y="755" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e14" edge="1" parent="1" source="process" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#00515A;strokeWidth=2;endArrow=block;endFill=1;" target="charts" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e15" edge="1" parent="1" source="process" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#00515A;strokeWidth=2;endArrow=block;endFill=1;" target="history" value="">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="550" y="755" />
+              <mxPoint x="787" y="755" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e16" edge="1" parent="1" source="kpi" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#16857B;strokeWidth=2;endArrow=block;endFill=1;" target="display" value="">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="212" y="895" />
+              <mxPoint x="500" y="895" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e17" edge="1" parent="1" source="charts" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#00515A;strokeWidth=2;endArrow=block;endFill=1;fontColor=#00515A;fontStyle=1;" target="display" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e18" edge="1" parent="1" source="history" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#16857B;strokeWidth=2;endArrow=block;endFill=1;" target="display" value="">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="787" y="895" />
+              <mxPoint x="500" y="895" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e19" edge="1" parent="1" source="display" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#00515A;strokeWidth=2;endArrow=block;endFill=1;fontColor=#00515A;fontStyle=1;" target="end" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
