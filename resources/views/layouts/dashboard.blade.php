@@ -56,9 +56,20 @@
                     <p class="text-lg font-semibold leading-tight">Solar Tracker · Dashboard</p>
                 </div>
             </div>
-            <a href="{{ url('/') }}" class="rounded-lg border border-white/30 px-4 py-2 text-sm font-medium hover:bg-white/10">
-                ← Home
-            </a>
+            <div class="flex flex-wrap items-center gap-2">
+                @auth
+                    <span class="hidden text-sm text-white/80 sm:inline">{{ auth()->user()->name }}</span>
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <button type="submit" class="rounded-lg border border-white/30 px-4 py-2 text-sm font-medium hover:bg-white/10">
+                            Uitloggen
+                        </button>
+                    </form>
+                @endauth
+                <a href="{{ url('/') }}" class="rounded-lg border border-white/30 px-4 py-2 text-sm font-medium hover:bg-white/10">
+                    ← Home
+                </a>
+            </div>
         </div>
     </header>
 
