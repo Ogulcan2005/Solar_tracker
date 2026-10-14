@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net" pages="3">
-  <diagram name="Pagina-1" id="ErlWV6vvGXEi4dSJ4TRr">
-    <mxGraphModel dx="2204" dy="950" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+  <diagram name="Concept_flow" id="ErlWV6vvGXEi4dSJ4TRr">
+    <mxGraphModel dx="3948" dy="1703" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -269,8 +269,8 @@
       </root>
     </mxGraphModel>
   </diagram>
-  <diagram id="VJaUw6oUdPtMwYX7ft8Q" name="Pagina-2">
-    <mxGraphModel dx="1961" dy="888" grid="1" gridSize="19" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+  <diagram id="VJaUw6oUdPtMwYX7ft8Q" name="System_flow">
+    <mxGraphModel dx="2847" dy="1102" grid="1" gridSize="19" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -526,7 +526,7 @@
       </root>
     </mxGraphModel>
   </diagram>
-  <diagram id="7ocpIbKZSu9of94OsBzs" name="Page-3">
+  <diagram id="7ocpIbKZSu9of94OsBzs" name="Dashboard_flow">
     <mxGraphModel dx="2060" dy="1124" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
