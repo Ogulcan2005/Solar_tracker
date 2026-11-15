@@ -12,7 +12,10 @@
                     {{ __("You're logged in!") }}
                     
                     <!-- Hier wordt je widget ingeladen -->
-                    @include('weather')
+                     <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+
+                        @include('weather')
+                    </div>
                 </div>
             </div>
         </div>
