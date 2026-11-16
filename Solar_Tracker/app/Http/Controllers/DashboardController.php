@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\SolarMeasurement;
+use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\View\View;
 
 class DashboardController extends Controller
@@ -20,27 +23,40 @@ class DashboardController extends Controller
      */
     private function liveSnapshot(): array
     {
+        $latest = SolarMeasurement::query()
+            ->latest('measurement_time')
+            ->first();
+
+        if ($latest === null) {
+            throw new \RuntimeException('Geen CSV-metingen gevonden. Voer eerst de SolarMeasurementSeeder uit.');
+        }
+
+        $day = Carbon::parse($latest->measurement_time)->toDateString();
+        $measurements = $this->measurementsForDay($day);
+        $yieldWh = $this->energyWh($measurements, 'power_watt');
+        $motorWh = $this->energyWh($measurements, 'motor_power_watt');
+
         return [
-            'status' => 'actief',
-            'status_label' => 'Actief',
-            'updated_at' => now()->format('d-m-Y H:i:s'),
-            'position_deg' => 47.5,
-            'target_deg' => 48.0,
+            'status' => $this->statusKey($latest->status),
+            'status_label' => $latest->status,
+            'updated_at' => Carbon::parse($latest->measurement_time)->format('d-m-Y H:i:s'),
+            'position_deg' => (float) $latest->position,
+            'target_deg' => null,
             'yield' => [
-                'w' => 842,
-                'wh_today' => 4.82,
-                'kwh_today' => 4.82,
+                'w' => (float) $latest->power_watt,
+                'wh_today' => $yieldWh,
+                'kwh_today' => $yieldWh / 1000,
             ],
             'motor' => [
-                'w' => 18,
-                'wh_today' => 0.09,
-                'kwh_today' => 0.09,
+                'w' => (float) $latest->motor_power_watt,
+                'wh_today' => $motorWh,
+                'kwh_today' => $motorWh / 1000,
             ],
             'net' => [
-                'w' => 824,
-                'wh_today' => 4.73,
-                'kwh_today' => 4.73,
-                'extra_vs_fixed_pct' => 12.4,
+                'w' => (float) $latest->net_power_watt,
+                'wh_today' => $yieldWh - $motorWh,
+                'kwh_today' => ($yieldWh - $motorWh) / 1000,
+                'extra_vs_fixed_pct' => null,
             ],
         ];
     }
@@ -50,22 +66,27 @@ class DashboardController extends Controller
      */
     private function historySeries(): array
     {
-        $hours = [];
-        $yieldKw = [];
-        $motorW = [];
-        $netWh = [];
+        $latest = SolarMeasurement::query()->latest('measurement_time')->firstOrFail();
+        $day = Carbon::parse($latest->measurement_time)->toDateString();
+        $measurements = $this->measurementsForDay($day);
+        $hourly = $measurements->groupBy(
+            fn (SolarMeasurement $measurement): string => Carbon::parse($measurement->measurement_time)->format('H:00')
+        );
 
-        for ($h = 6; $h <= 18; $h++) {
-            $hours[] = sprintf('%02d:00', $h);
-            $sun = max(0, sin(($h - 6) / 12 * M_PI));
-            $yieldKw[] = round($sun * 0.95 + (mt_rand(-5, 5) / 100), 2);
-            $motorW[] = $sun > 0.1 ? mt_rand(12, 28) : 0;
-            $netWh[] = round(($yieldKw[count($yieldKw) - 1] * 1000 - $motorW[count($motorW) - 1]) * 0.25, 0);
-        }
+        $hours = $hourly->keys()->values()->all();
+        $yieldKw = $hourly->map(fn (Collection $rows): float => round($rows->avg('power_watt') / 1000, 3))->values()->all();
+        $motorW = $hourly->map(fn (Collection $rows): float => round($rows->avg('motor_power_watt'), 1))->values()->all();
+        $netWh = $hourly->map(fn (Collection $rows): float => round($this->energyWh($rows, 'net_power_watt'), 2))->values()->all();
 
-        $days = ['Ma', 'Di', 'Wo', 'Do', 'Vr', 'Za', 'Zo'];
-        $dailyKwh = [3.2, 4.1, 3.8, 4.9, 5.2, 4.6, 4.8];
-        $dailyNet = [3.05, 3.92, 3.64, 4.71, 5.01, 4.44, 4.63];
+        $daily = SolarMeasurement::query()
+            ->selectRaw('DATE(measurement_time) as day')
+            ->selectRaw('SUM(power_watt) / 120 as yield_wh')
+            ->selectRaw('SUM(net_power_watt) / 120 as net_wh')
+            ->groupBy('day')
+            ->orderByDesc('day')
+            ->limit(7)
+            ->get()
+            ->sortBy('day');
 
         return [
             'intraday' => [
@@ -74,9 +95,9 @@ class DashboardController extends Controller
                 'motor_w' => $motorW,
             ],
             'daily' => [
-                'labels' => $days,
-                'yield_kwh' => $dailyKwh,
-                'net_kwh' => $dailyNet,
+                'labels' => $daily->map(fn ($row): string => Carbon::parse($row->day)->format('d-m'))->values()->all(),
+                'yield_kwh' => $daily->map(fn ($row): float => round($row->yield_wh / 1000, 2))->values()->all(),
+                'net_kwh' => $daily->map(fn ($row): float => round($row->net_wh / 1000, 2))->values()->all(),
             ],
             'net_cumulative_wh' => $netWh,
         ];
@@ -87,19 +108,41 @@ class DashboardController extends Controller
      */
     private function measurementLog(): array
     {
-        $rows = [];
-        $t = now()->startOfHour();
+        return SolarMeasurement::query()
+            ->latest('measurement_time')
+            ->limit(8)
+            ->get()
+            ->map(fn (SolarMeasurement $measurement): array => [
+                'time' => Carbon::parse($measurement->measurement_time)->format('H:i:s'),
+                'status' => $this->statusKey($measurement->status),
+                'angle' => (float) $measurement->position,
+                'yield_w' => (float) $measurement->power_watt,
+                'motor_w' => (float) $measurement->motor_power_watt,
+            ])
+            ->all();
+    }
 
-        for ($i = 0; $i < 8; $i++) {
-            $rows[] = [
-                'time' => $t->copy()->subMinutes($i * 15)->format('H:i'),
-                'status' => $i === 0 ? 'actief' : ($i === 5 ? 'handmatig' : 'actief'),
-                'angle' => 45 + $i * 0.3,
-                'yield_w' => 780 + mt_rand(-40, 60),
-                'motor_w' => mt_rand(10, 22),
-            ];
-        }
+    private function measurementsForDay(string $day): Collection
+    {
+        return SolarMeasurement::query()
+            ->whereDate('measurement_time', $day)
+            ->orderBy('measurement_time')
+            ->get();
+    }
 
-        return $rows;
+    private function energyWh(Collection $measurements, string $column): float
+    {
+        return round($measurements->sum($column) / 120, 2);
+    }
+
+    private function statusKey(string $status): string
+    {
+        return match (mb_strtolower($status)) {
+            'actief', 'active' => 'actief',
+            'handmatig', 'manual' => 'handmatig',
+            'storing', 'error', 'fault' => 'storing',
+            'veilige stand', 'safe', 'safe mode' => 'veilige_stand',
+            default => 'actief',
+        };
     }
 }
